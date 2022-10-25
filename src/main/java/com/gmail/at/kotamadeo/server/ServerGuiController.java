@@ -5,6 +5,7 @@ import com.gmail.at.kotamadeo.connection.Message;
 import com.gmail.at.kotamadeo.connection.MessageType;
 import com.gmail.at.kotamadeo.connection.Network;
 import com.gmail.at.kotamadeo.database.SQLService;
+import lombok.NoArgsConstructor;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -13,6 +14,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+@NoArgsConstructor
 public class ServerGuiController {
 
     private ServerGuiView gui;

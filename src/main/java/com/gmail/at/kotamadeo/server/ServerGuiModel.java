@@ -5,9 +5,6 @@ import com.gmail.at.kotamadeo.connection.Network;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author Zurbaevi Nika
- */
 public class ServerGuiModel {
 
     private final Map<String, Network> allUsers = new HashMap<>();

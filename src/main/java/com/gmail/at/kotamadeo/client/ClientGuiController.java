@@ -4,7 +4,7 @@ import com.gmail.at.kotamadeo.connection.Message;
 import com.gmail.at.kotamadeo.connection.MessageType;
 import com.gmail.at.kotamadeo.connection.Network;
 import com.gmail.at.kotamadeo.database.SQLService;
-import com.gmail.at.kotamadeo.settings.Settings;
+import com.gmail.at.kotamadeo.util.Constants;
 import com.gmail.at.kotamadeo.validator.Validator;
 import com.gmail.at.kotamadeo.sound.MakeSound;
 
@@ -104,14 +104,14 @@ public class ClientGuiController {
 
     protected void informAboutAddingNewUser(Message message) {
         model.addUser(message.getTextMessage());
-        MakeSound.playSound(Settings.SOUND_URL_CONNECTED);
+        MakeSound.playSound(Constants.SOUND_URL_CONNECTED);
         view.refreshListUsers(model.getAllNickname());
         view.addMessage(String.format("(%s) присоединился к чату.%n", message.getTextMessage()));
     }
 
     protected void informAboutDeletingNewUser(Message message) {
         model.deleteUser(message.getTextMessage());
-        MakeSound.playSound(Settings.SOUND_URL_DISCONNECT);
+        MakeSound.playSound(Constants.SOUND_URL_DISCONNECT);
         view.refreshListUsers(model.getAllNickname());
         view.addMessage(String.format("(%s) покинул чат.%n", message.getTextMessage()));
     }

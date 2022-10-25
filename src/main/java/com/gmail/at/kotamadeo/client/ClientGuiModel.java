@@ -1,8 +1,10 @@
 package com.gmail.at.kotamadeo.client;
 
+import lombok.NoArgsConstructor;
+
 import java.util.HashSet;
 import java.util.Set;
-
+@NoArgsConstructor
 public class ClientGuiModel {
 
     private Set<String> allUserNicknames = new HashSet<>();

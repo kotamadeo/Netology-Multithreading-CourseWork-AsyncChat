@@ -1,8 +1,8 @@
 package com.gmail.at.kotamadeo.authorization;
 
 import com.gmail.at.kotamadeo.database.SQLService;
-import com.gmail.at.kotamadeo.settings.Settings;
-import com.gmail.at.kotamadeo.validator.Validator;
+import com.gmail.at.kotamadeo.util.Constants;
+import com.gmail.at.kotamadeo.util.validator.Validator;
 import lombok.Getter;
 
 import javax.swing.*;
@@ -18,7 +18,7 @@ public class Registration extends JDialog {
     private boolean succeeded;
 
     public Registration(Frame parent) {
-        super(parent, Settings.REGISTRATION_TITLE, true);
+        super(parent, Constants.REGISTRATION_TITLE, true);
         JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;

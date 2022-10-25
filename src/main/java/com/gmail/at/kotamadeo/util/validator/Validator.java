@@ -1,8 +1,11 @@
-package com.gmail.at.kotamadeo.validator;
+package com.gmail.at.kotamadeo.util.validator;
+
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.regex.Pattern;
-
-public class Validator {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class Validator {
 
     private static final String NICKNAME_PATTERN = "^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,10}[a-zA-Z0-9]$";
     private static final String PASSWORD_PATTERN = "^(?=.*[0-5])(?=.*[a-z])(?=.*[A-Z]).{4,20}$";

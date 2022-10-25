@@ -1,6 +1,10 @@
-package com.gmail.at.kotamadeo.settings;
+package com.gmail.at.kotamadeo.util;
 
-public class Settings {
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class Constants {
 
     public static String CLIENT_TITLE = "Чат";
     public static String SERVER_TITLE = "Сервер";

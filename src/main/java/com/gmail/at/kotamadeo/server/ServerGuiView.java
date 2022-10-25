@@ -2,7 +2,7 @@ package com.gmail.at.kotamadeo.server;
 
 import com.gmail.at.kotamadeo.client.ClientGuiView;
 import com.gmail.at.kotamadeo.database.SQLService;
-import com.gmail.at.kotamadeo.settings.Settings;
+import com.gmail.at.kotamadeo.util.Constants;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -46,10 +46,10 @@ public class ServerGuiView extends JFrame {
         textAreaLog = new JTextArea();
         JButton buttonSaveLog = new JButton();
 
-        setTitle(Settings.SERVER_TITLE);
+        setTitle(Constants.SERVER_TITLE);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(Settings.SERVER_SIZE_WIDTH, Settings.SERVER_SIZE_HEIGHT));
-        setPreferredSize(new java.awt.Dimension(Settings.SERVER_SIZE_WIDTH, Settings.SERVER_SIZE_HEIGHT));
+        setMinimumSize(new java.awt.Dimension(Constants.SERVER_SIZE_WIDTH, Constants.SERVER_SIZE_HEIGHT));
+        setPreferredSize(new java.awt.Dimension(Constants.SERVER_SIZE_WIDTH, Constants.SERVER_SIZE_HEIGHT));
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -60,12 +60,12 @@ public class ServerGuiView extends JFrame {
         setLocationRelativeTo(null);
 
         try {
-            setIconImage(ImageIO.read(new File(Settings.SERVER_ICON_IMAGE)));
+            setIconImage(ImageIO.read(new File(Constants.SERVER_ICON_IMAGE)));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        buttonStartServer.setIcon(new ImageIcon(Settings.IMAGE_ICON_START_SERVER));
+        buttonStartServer.setIcon(new ImageIcon(Constants.IMAGE_ICON_START_SERVER));
         buttonStartServer.setText("Запустить сервер");
         buttonStartServer.addActionListener(e -> {
             server.startServer(getPortFromOptionPane());
@@ -75,7 +75,7 @@ public class ServerGuiView extends JFrame {
             }
         });
 
-        buttonStopServer.setIcon(new ImageIcon(Settings.IMAGE_ICON_STOP_SERVER));
+        buttonStopServer.setIcon(new ImageIcon(Constants.IMAGE_ICON_STOP_SERVER));
         buttonStopServer.setText("Остановить сервер");
         buttonStopServer.setEnabled(false);
         buttonStopServer.addActionListener(e -> {
@@ -85,12 +85,12 @@ public class ServerGuiView extends JFrame {
                 buttonStopServer.setEnabled(false);
             }
         });
-        buttonSaveLog.setIcon(new ImageIcon(Settings.IMAGE_ICON_SAVE_LOG));
+        buttonSaveLog.setIcon(new ImageIcon(Constants.IMAGE_ICON_SAVE_LOG));
         buttonSaveLog.setText("Сохранить логи");
         buttonSaveLog.addActionListener(e -> saveToFile());
         textAreaLog.setEditable(false);
-        textAreaLog.setColumns(Settings.TEXT_AREA_LOG_SERVER_COLUMNS);
-        textAreaLog.setRows(Settings.TEXT_AREA_LOG_SERVER_ROWS);
+        textAreaLog.setColumns(Constants.TEXT_AREA_LOG_SERVER_COLUMNS);
+        textAreaLog.setRows(Constants.TEXT_AREA_LOG_SERVER_ROWS);
         scrollPanel.setViewportView(textAreaLog);
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -1,11 +1,15 @@
-package com.gmail.at.kotamadeo.sound;
+package com.gmail.at.kotamadeo.util.sound;
+
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import java.io.File;
 
-public class MakeSound {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class MakeSound {
 
     private static boolean soundOptions;
 

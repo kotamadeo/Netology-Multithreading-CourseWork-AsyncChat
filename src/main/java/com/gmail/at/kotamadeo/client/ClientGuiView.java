@@ -3,8 +3,8 @@ package com.gmail.at.kotamadeo.client;
 import com.gmail.at.kotamadeo.authorization.Login;
 import com.gmail.at.kotamadeo.authorization.Registration;
 import com.gmail.at.kotamadeo.database.SQLService;
-import com.gmail.at.kotamadeo.settings.Settings;
-import com.gmail.at.kotamadeo.sound.MakeSound;
+import com.gmail.at.kotamadeo.util.Constants;
+import com.gmail.at.kotamadeo.util.sound.MakeSound;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -79,10 +79,10 @@ public class ClientGuiView extends JFrame {
         buttonSignIn = new JButton();
         buttonSignOut = new JButton();
         buttonDisconnectToServer = new JButton();
-        setTitle(Settings.CLIENT_TITLE);
+        setTitle(Constants.CLIENT_TITLE);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(Settings.CLIENT_SIZE_WIDTH, Settings.CLIENT_SIZE_HEIGHT));
-        setPreferredSize(new java.awt.Dimension(Settings.CLIENT_SIZE_WIDTH, Settings.CLIENT_SIZE_HEIGHT));
+        setMinimumSize(new java.awt.Dimension(Constants.CLIENT_SIZE_WIDTH, Constants.CLIENT_SIZE_HEIGHT));
+        setPreferredSize(new java.awt.Dimension(Constants.CLIENT_SIZE_WIDTH, Constants.CLIENT_SIZE_HEIGHT));
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -101,7 +101,7 @@ public class ClientGuiView extends JFrame {
         });
         setLocationRelativeTo(null);
         try {
-            setIconImage(ImageIO.read(new File(Settings.CLIENT_ICON_IMAGE)));
+            setIconImage(ImageIO.read(new File(Constants.CLIENT_ICON_IMAGE)));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -116,11 +116,11 @@ public class ClientGuiView extends JFrame {
         radioButtonSendPrivateMessageToSelectedUser.setToolTipText("Отправить приватное сообщение выбранному пользователю");
         radioButtonSendPrivateMessageToSelectedUser.setEnabled(false);
         radioButtonSendPrivateMessageToSelectedUser.addActionListener(e -> radioButtonCheckPrivateOrNot = true);
-        buttonChangeName.setIcon(new ImageIcon(Settings.IMAGE_ICON_CHANGE_NAME));
+        buttonChangeName.setIcon(new ImageIcon(Constants.IMAGE_ICON_CHANGE_NAME));
         buttonChangeName.setToolTipText("Изменить ник");
         buttonChangeName.setEnabled(false);
         buttonChangeName.addActionListener(e -> client.changeNickname());
-        buttonChangeInputColor.setIcon(new ImageIcon(Settings.IMAGE_ICON_COLOR_WHEEL));
+        buttonChangeInputColor.setIcon(new ImageIcon(Constants.IMAGE_ICON_COLOR_WHEEL));
         buttonChangeInputColor.setToolTipText("Изменить цвет сообщений");
         buttonChangeInputColor.addActionListener(e -> {
             Color color = JColorChooser.showDialog(null, "Настройка цвета", textAreaChatLog.getForeground());
@@ -129,25 +129,25 @@ public class ClientGuiView extends JFrame {
             }
         });
 
-        buttonSoundOptions.setIcon(new ImageIcon(Settings.IMAGE_ICON_VOLUME_ON));
+        buttonSoundOptions.setIcon(new ImageIcon(Constants.IMAGE_ICON_VOLUME_ON));
         buttonSoundOptions.setToolTipText("Настройки звуковых оповещений");
         buttonSoundOptions.addActionListener(e -> {
             if (!MakeSound.isIncluded()) {
                 MakeSound.off();
-                buttonSoundOptions.setIcon(new ImageIcon(Settings.IMAGE_ICON_VOLUME_OFF));
+                buttonSoundOptions.setIcon(new ImageIcon(Constants.IMAGE_ICON_VOLUME_OFF));
             } else {
                 MakeSound.on();
-                buttonSoundOptions.setIcon(new ImageIcon(Settings.IMAGE_ICON_VOLUME_ON));
+                buttonSoundOptions.setIcon(new ImageIcon(Constants.IMAGE_ICON_VOLUME_ON));
             }
         });
 
-        buttonChatLog.setIcon(new ImageIcon(Settings.IMAGE_ICON_SAVE_LOG));
+        buttonChatLog.setIcon(new ImageIcon(Constants.IMAGE_ICON_SAVE_LOG));
         buttonChatLog.setToolTipText("Логи чата");
         buttonChatLog.addActionListener(e -> saveToFile());
-        buttonMoveToSystemTray.setIcon(new ImageIcon(Settings.IMAGE_ICON_MOVE_TRAY));
+        buttonMoveToSystemTray.setIcon(new ImageIcon(Constants.IMAGE_ICON_MOVE_TRAY));
         buttonMoveToSystemTray.setToolTipText("Свернуть в трей");
         buttonMoveToSystemTray.addActionListener(e -> moveToSystemTray());
-        buttonSend.setIcon(new ImageIcon(Settings.IMAGE_ICON_SEND_MESSAGE));
+        buttonSend.setIcon(new ImageIcon(Constants.IMAGE_ICON_SEND_MESSAGE));
         buttonSend.setText("Отправить");
         buttonSend.setToolTipText("Отправить сообщение");
         buttonSend.setEnabled(false);
@@ -191,13 +191,13 @@ public class ClientGuiView extends JFrame {
         scrollPanelForUserListOnline.setViewportView(listUserOnline);
 
         textAreaChatLog.setEditable(false);
-        textAreaChatLog.setColumns(Settings.TEXT_AREA_CHAT_LOG_COLUMNS);
-        textAreaChatLog.setRows(Settings.TEXT_AREA_CHAT_LOG_ROWS);
+        textAreaChatLog.setColumns(Constants.TEXT_AREA_CHAT_LOG_COLUMNS);
+        textAreaChatLog.setRows(Constants.TEXT_AREA_CHAT_LOG_ROWS);
         textAreaChatLog.setToolTipText("Логи чата");
-        textAreaChatLog.setFont(new Font(Settings.TEXT_AREA_CHAT_LOG_FONT_NAME, Font.PLAIN, Settings.TEXT_AREA_CHAT_LOG_FONT_SIZE));
+        textAreaChatLog.setFont(new Font(Constants.TEXT_AREA_CHAT_LOG_FONT_NAME, Font.PLAIN, Constants.TEXT_AREA_CHAT_LOG_FONT_SIZE));
         scrollPanelForChatLog.setViewportView(textAreaChatLog);
 
-        buttonRegistration.setIcon(new ImageIcon(Settings.IMAGE_ICON_REGISTRATION));
+        buttonRegistration.setIcon(new ImageIcon(Constants.IMAGE_ICON_REGISTRATION));
         buttonRegistration.setToolTipText("Регистрация в чате");
         buttonRegistration.addActionListener(e -> {
             if (!client.isDatabaseConnected()) {
@@ -208,7 +208,7 @@ public class ClientGuiView extends JFrame {
                 }
             }
         });
-        buttonSignIn.setIcon(new ImageIcon(Settings.IMAGE_ICON_SIGN_IN));
+        buttonSignIn.setIcon(new ImageIcon(Constants.IMAGE_ICON_SIGN_IN));
         buttonSignIn.setToolTipText("Авторизация в чате");
         buttonSignIn.addActionListener(e -> {
             if (!client.isDatabaseConnected()) {
@@ -224,7 +224,7 @@ public class ClientGuiView extends JFrame {
                 }
             }
         });
-        buttonSignOut.setIcon(new ImageIcon(Settings.IMAGE_ICON_SIGN_OUT));
+        buttonSignOut.setIcon(new ImageIcon(Constants.IMAGE_ICON_SIGN_OUT));
         buttonSignOut.setToolTipText("Выход из чата");
         buttonSignOut.setEnabled(false);
         buttonSignOut.addActionListener(e -> {
@@ -244,7 +244,7 @@ public class ClientGuiView extends JFrame {
                 }
             }
         });
-        buttonConnectionToServer.setIcon(new ImageIcon(Settings.IMAGE_ICON_CONNECTION));
+        buttonConnectionToServer.setIcon(new ImageIcon(Constants.IMAGE_ICON_CONNECTION));
         buttonConnectionToServer.setText("Подключиться");
         buttonConnectionToServer.setToolTipText("Подключиться к серверу");
         buttonConnectionToServer.setEnabled(false);
@@ -262,7 +262,7 @@ public class ClientGuiView extends JFrame {
                 }
             }
         });
-        buttonDisconnectToServer.setIcon(new ImageIcon(Settings.IMAGE_ICON_DISCONNECT));
+        buttonDisconnectToServer.setIcon(new ImageIcon(Constants.IMAGE_ICON_DISCONNECT));
         buttonDisconnectToServer.setText("Отсоединиться");
         buttonDisconnectToServer.setToolTipText("Отсоединиться от сервера");
         buttonDisconnectToServer.setEnabled(false);
@@ -356,7 +356,7 @@ public class ClientGuiView extends JFrame {
 
     protected void addMessage(String text) {
         textAreaChatLog.append("[" + LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")) + "] " + text);
-        MakeSound.playSound(Settings.SOUND_URL_NEW_MESSAGE);
+        MakeSound.playSound(Constants.SOUND_URL_NEW_MESSAGE);
     }
 
     protected void refreshListUsers(Set<String> allUserNicknames) {
@@ -422,8 +422,8 @@ public class ClientGuiView extends JFrame {
 
     private void moveToSystemTray() {
         try {
-            BufferedImage icon = ImageIO.read(new File(Settings.CLIENT_ICON_IMAGE));
-            final TrayIcon trayIcon = new TrayIcon(icon, Settings.CLIENT_TITLE);
+            BufferedImage icon = ImageIO.read(new File(Constants.CLIENT_ICON_IMAGE));
+            final TrayIcon trayIcon = new TrayIcon(icon, Constants.CLIENT_TITLE);
             setVisible(false);
             SystemTray systemTray = SystemTray.getSystemTray();
             systemTray.add(trayIcon);
